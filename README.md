@@ -10,7 +10,7 @@ The current package offered pure Java solution for the following tasks:
 * Product Recommendation based on similar images in user's recent browsing history
 * Object Detection (SSD)
 
-* Object Detection 
+# Object Detection 
 
 The following [sample codes](src/main/java/com/github/cschen1205/DeepVisionDemo.java) shows how to detect multiple
 objects in an image using [DeepVision](src/main/java/com/github/cschen1205/DeepVision.java) class
@@ -52,7 +52,7 @@ public class ObjectDetectionDemo {
 }
 ```
 
-* Image Classification 
+# Image Classification 
 
 The following [sample codes](src/main/java/com/github/cschen1205/DeepVisionDemo.java) shows how to classify image 
 using [DeepVision](src/main/java/com/github/cschen1205/DeepVision.java) class
@@ -86,7 +86,7 @@ public class ImageClassifierDemo {
 }
 ```
 
-* Image Embedding 
+# Image Embedding 
 
 The following [sample codes](src/main/java/com/github/cschen1205/DeepVisionDemo.java) shows how to convert an image
  to a fixed-length embedding vector using [DeepVision](src/main/java/com/github/cschen1205/DeepVision.java) class
@@ -120,7 +120,7 @@ public class ImageEmbeddingDemo {
 }
 ```
 
-* Image Search 
+# Image Search 
 
 The following [sample codes](src/main/java/com/github/cschen1205/DeepVisionDemo.java) shows how to search for similar
  images using [DeepVision](src/main/java/com/github/cschen1205/DeepVision.java) class
@@ -164,7 +164,7 @@ public class ImageSearchDemo {
 }
 ```
 
-* Product Recommendation 
+# Product Recommendation 
 
 The following [sample codes](src/main/java/com/github/cschen1205/DeepVisionDemo.java) shows how to recommend products
  based on user's recent image browsing history, using [DeepVision](src/main/java/com/github/cschen1205/DeepVision.java) class
