@@ -1,14 +1,15 @@
-package com.github.cschen1205.imgreg.search.models;
+package com.github.cschen1205.imgreg.search;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.github.cschen1205.imgreg.classifiers.images.models.ImageEncoder;
+import com.github.cschen1205.imgreg.classifiers.images.models.ImageClassifier;
 import com.github.cschen1205.imgreg.classifiers.images.models.inception.InceptionImageClassifier;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,7 +23,7 @@ import java.util.stream.Stream;
 @Setter
 public class ImageSearchEngineInception implements ImageSearchEngine {
     private static final Logger logger = LoggerFactory.getLogger(ImageSearchEngine.class);
-    private ImageEncoder encoder;
+    private ImageClassifier classifier;
     private List<ImageSearchEntry> database = new ArrayList<>();
     private String indexDbPath = "/tmp/image_index_db.json";
 
@@ -33,7 +34,7 @@ public class ImageSearchEngineInception implements ImageSearchEngine {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        encoder = classifier;
+        this.classifier = classifier;
     }
 
 
@@ -45,7 +46,7 @@ public class ImageSearchEngineInception implements ImageSearchEngine {
     @Override
     public ImageSearchEntry index(File file) {
         logger.info("indexing file: " + file.getAbsolutePath());
-        float[] result = encoder.encode_image(file);
+        float[] result = classifier.encode_image(file);
         ImageSearchEntry entry = new ImageSearchEntry(file.getAbsolutePath(), result);
         database.add(entry);
         return entry;
@@ -65,7 +66,7 @@ public class ImageSearchEngineInception implements ImageSearchEngine {
 
     @Override
     public List<ImageSearchEntry> query(File file, int pageIndex, int pageSize, boolean skipPerfectMatch) {
-        float[] d = encoder.encode_image(file);
+        float[] d = classifier.encode_image(file);
         List<ImageSearchEntry> temp = new ArrayList<>();
         for(ImageSearchEntry entry : database){
             if(!entry.match(d) || !skipPerfectMatch){
@@ -129,5 +130,25 @@ public class ImageSearchEngineInception implements ImageSearchEngine {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public String classifyImage(File image) {
+        return classifier.predict_image(image);
+    }
+
+    @Override
+    public String classifyImage(BufferedImage image) {
+        return classifier.predict_image(image);
+    }
+
+    @Override
+    public float[] encodeImage(File image) {
+        return classifier.encode_image(image);
+    }
+
+    @Override
+    public float[] encodeImage(BufferedImage image) {
+        return classifier.encode_image(image);
     }
 }

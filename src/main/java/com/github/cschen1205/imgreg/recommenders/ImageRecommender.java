@@ -1,7 +1,7 @@
-package com.github.cschen1205.imgreg.recommenders.models;
+package com.github.cschen1205.imgreg.recommenders;
 
-import com.github.cschen1205.imgreg.search.models.ImageSearchEngine;
-import com.github.cschen1205.imgreg.search.models.ImageSearchEntry;
+import com.github.cschen1205.imgreg.search.ImageSearchEngine;
+import com.github.cschen1205.imgreg.search.ImageSearchEntry;
 
 import java.util.List;
 

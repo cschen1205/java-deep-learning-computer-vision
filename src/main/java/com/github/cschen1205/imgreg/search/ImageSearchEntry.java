@@ -1,4 +1,4 @@
-package com.github.cschen1205.imgreg.search.models;
+package com.github.cschen1205.imgreg.search;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.github.cschen1205.imgreg.recommenders.models;
+package com.github.cschen1205.imgreg.recommenders;
 
 import lombok.Getter;
 import lombok.Setter;
